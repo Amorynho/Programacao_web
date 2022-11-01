@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script type="text/javascript">
+		function mostrarvalor(componente){
+			var Valor = componente.getAttribute('data-nome');
+			alert(Valor);
+		}
+	</script>
+	<style type="text/css">
+		.pessoa{
+			color: red;
+		}
+		.pessoa[data-idade='30']{
+			color: blue;
+		}
+		.pessoa::before{
+			content: 'Nome: ';
+		}
+		.pessoa::after{
+			content: ' -Idade: ' attr(data-idade) ' Ano(s) - C.P.F: ' attr(data-cpf);
+		}
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="pessoa" onclick="mostrarvalor(this)" data-idade="20" data-cpf="999" data-nome="João">João</li>
+		<li class="pessoa" onclick="mostrarvalor(this)" data-idade="30" data-cpf="888" data-nome="José">José</li>
+		<li class="pessoa" onclick="mostrarvalor(this)" data-idade="40" data-cpf="777" data-nome="Maria">Maria</li>
+	</ul>
+
+</body>
+</html>
