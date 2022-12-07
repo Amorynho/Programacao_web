@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta  http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta  name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="alert alert-success alert alert-dismissible fade show" role="alert">
+			<strong>Success!</strong> você deve <a href="#" class="alert-link">ler esta mensagem</a>.
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		<div class="alert -alert-info alert alert-dismissible fade show" role="alert">
+			<strong>Info!</strong> Indica um informativo neutro de mudacça ou ação.
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<div class="alert alert-warning alert alert-dismissible fade show" role="alert">
+			<strong>Warning!</strong> Indica um alerta que precisa de sua atenção.
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<div class="alert alert-danger alert alert-dismissible fade show" role="alert">
+			<strong>Danger!</strong> Indica um potencial perigo ou ação negativa.
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	</div>
+	<hr>
+	<h3>Tooltip</h3>
+	<button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Detalhes do item">
+		Dica
+	</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> <br>
+<h3>Popover</h3>
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Detalhes" data-bs-content="Breve detalhes aqui!" data-placement="right" data-bs-trigger="focus">
+	Detalhes
+</button>
+</body>
+<script type="text/javascript">
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip]'))
+	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEL) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+
+	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+	return new bootstrap.Popover(popoverTriggerEl)
+})
+
+</script>
+</html>
