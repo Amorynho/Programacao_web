@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Divs</title>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- jquery -->
+		<script src="jquery-3.2.1.min.js"></script>
+
+		<script type="text/javascript">
+		 $(document).ready(function(){
+		 	// pega o evento de todos os elementos da classe .campo
+ 			$(".campo").focus(function(){
+       			 $(this).css("background-color", "#cccccc");
+    		});
+		 $(".campo").blur(function(){
+       			 $(this).css("background-color", "#ffffff");
+    	 });
+
+    	 $(".combo").change(function(){
+       		 alert('O Elemento foi modificado: Site selecionado: '+$(this).val());
+    	 });    		
+	  });
+		</script>
+
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="jumbotron">
+				<h1>EVENTOS COM JQUERY</h1>
+			</div>
+
+			<hr />
+
+		
+<div class="col-md-4">
+	Nome:<input type="text" class="campo" ><br>
+	Email:<input type="text" class="campo" ><br>
+	SITE: <select class="combo">
+		<option value="www.gooogle.com">Google</option>
+		<option value="www.yahoo.com">Yahoo</option>		
+		<option value="www.msn.com">MSN</option>
+	</select>
+</div>
+
+
+			
+			</div>
+
+			<hr />
+
+	
+			
+		</div>
+	</body>
+</html>

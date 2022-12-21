@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Divs</title>
+
+		<!-- bootstrap - link cdn -->
+    <!-- Bootstrap CSS 4.0.0 -->
+    <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+          crossorigin="anonymous">
+
+		<!-- jquery -->
+		 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+		<script type="text/javascript">
+
+		 $(document).ready(function(){
+
+		 	$('.caixa').click(function(){
+		 		alert('Evento Click');
+		 	});
+
+		 	$('.caixa2').dblclick(function(){
+		 		alert('Evento Dblclick');
+		 	});
+
+
+		 });
+
+		</script>
+
+	</head>
+
+
+
+
+
+
+
+	<body>
+		
+		<div class="container">
+
+			
+
+			<div class="jumbotron">
+				<h1>EVENTOS COM JQUERY</h1>
+			</div>
+
+			<hr />
+
+			<div class="row">
+		
+<div class="col-md-6">
+	<div style="height: 100px; width: 150px; background:#428bca;" class="caixa float-left">Evento Click</div>
+	<div style="height: 100px; width: 150px; background:#5cb85c; margin-left:15px" class="caixa float-left">Evento Click</div>
+</div>
+
+			<div class="col-md-6">
+				<div style="height: 100px; width: 150px; background:#428bca;" class="caixa2 float-left">Evento Dblclick</div>
+				<div style="height: 100px; width: 150px; background:#5cb85c; margin-left:15px" class="caixa2 float-left">Evento Dblclick</div>
+			</div>
+		</div>
+
+			
+ 		</div>
+
+
+
+
+
+
+</body>
+</html>
