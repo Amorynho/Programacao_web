@@ -1,0 +1,226 @@
+ <html>
+    <head>
+    <title>Trabalho JQuery Webservice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            //Quando o botão é clicado.
+            $("#mybtn").click(function() {
+                //Nova variável "cep".
+                var cep = $("#cep").val();
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                 $("#rua").val("...");
+                 $("#bairro").val("...");
+                 $("#cidade").val("...");
+                 $("#uf").val("...");
+                 $("#ibge").val("...");
+                 //Consulta o webservice viacep.com.br/
+                 var url = "https://viacep.com.br/ws/"+ cep +"/json/?callback=?";
+                 $.getJSON(url, function(retorno) {
+                            if (!("erro" in retorno)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(retorno.logradouro);
+                                $("#bairro").val(retorno.bairro);
+                                $("#cidade").val(retorno.localidade);
+                                $("#uf").val(retorno.uf);
+                                $("#ibge").val(retorno.ibge);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                alert("CEP não encontrado.");
+                            }
+                        });
+            });/* FIM DA FUNÇÃO viacep*/
+
+
+
+
+
+              $("#btn1").click(function() {
+                var data1 = $("#data1").val();
+                var url = "http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.dataextenso.logic?string="+data1;
+                 $.getJSON(url, function(retorno) {
+                            if (!("erro" in retorno)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#dia").val(retorno.dia);
+                                $("#mes").val(retorno.mes);
+                                $("#ano").val(retorno.ano);
+                                $("#extenso").val(retorno.extenso);
+                            } //end if.
+                            else {
+                                 alert("Erro");
+                            }
+                        });
+            });/* FIM DA FUNÇÃO dataextenso*/
+
+
+$("#btn2").click(function() {
+    var data2 = $("#data2").val();
+    var soma = $("#soma").val();
+    var resultadosoma = $("#data2" +';'+"soma")
+    var url = "http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.datasoma.logic?string="+resultadosoma
+    $.getJSON(url, function(retorno) {
+        if (!("erro" in retorno)) {
+           $("#dia").val(retorno.dia);
+            $("#mes").val(retorno.mes);
+            $("#ano").val(retorno.ano);
+            $("#extenso").val(retorno.extenso);
+        }
+        else{
+            alert("Erro");
+        }
+  });
+});
+
+        }); /* FIM DA FUNÇÃO ready*/
+
+
+
+ 
+
+    </script>
+    </head>
+
+    <body>
+
+    <!-- Inicio do formulario -->
+    <div>  
+        <label>Cep:
+        <input name="cep" type="text" id="cep" value="" placeholder="Somente números" size="10" maxlength="9" /></label>
+        <button id="mybtn">Clique</button>
+        <br/>
+        <hr>
+
+        <label>Rua:<br />
+        <input name="rua" type="text" id="rua" size="60" /></label><br />
+        <label>Bairro:<br />
+        <input name="bairro" type="text" id="bairro" size="40" /></label><br />
+        <label>Cidade:<br />
+        <input name="cidade" type="text" id="cidade" size="40" /></label><br />
+        <label>Estado:<br />
+        <input name="uf" type="text" id="uf" size="2" /></label><br />
+        <label>IBGE:<br />
+        <input name="ibge" type="text" id="ibge" size="8" /></label><br />
+        <hr>
+
+    </div>
+
+
+
+
+
+
+
+     <div>
+         <h1>Data Extenso - EXEMPLO FEITO PELO PROFESSOR</h1>
+          <div>Recebe uma data no formato dd/mm/aaaa e retorna um texo com a data por extenso</div>
+
+          <div>URL Exemplo:<a target="_blank" href="http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.dataextenso.logic?string=21/12/2022"> http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.dataextenso.logic?string=21/12/2022</a></div>
+
+           <div>Onde 21/12/2022 é o parâmetro passado que deve ser lido do input. </div>
+
+          <br>
+
+      <div> <!-- INPUTS E BOTÕES -->
+         <label>Data:
+        <input name="data" type="text" id="data1" placeholder="dd/mm/aaaa" size="10" maxlength="10" /></label>
+        <button id="btn1">Clique</button>
+        <br/>
+        <hr>
+         <label>Dia:<br />
+        <input name="dia" type="text" id="dia" size="40" /></label><br />
+         <label>Mês:<br />
+        <input name="mes" type="text" id="mes" size="40" /></label><br />
+         <label>Ano:<br />
+        <input name="ano" type="text" id="ano" size="40" /></label><br />               
+        <label>Extenso:<br />
+        <input name="extenso" type="text" id="extenso" size="40" /></label><br />
+       </div>
+    </div>
+
+
+
+
+
+
+    <div>
+		<hr>
+         <h1>Data Soma</h1>
+          <div>Recebe uma data no formato dd/mm/aaaa e um número inteiro. Retorna a data correspondente a soma desse número com data informada.</div>
+
+          <div>URL Exemplo:<a target="_blank" href="http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.datasoma.logic?string=21/12/2022;10"> http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.datasoma.logic?string=21/12/2022;10</a></div>
+
+           <div>Onde 21/12/2022 e 10 são os parâmetros passados separados por ; </div>
+          <br>
+
+          <div> <!-- INPUTS E BOTÕES -->
+         <label>Data:
+        <input name="data" type="text" id="data2" placeholder="dd/mm/aaaa" size="10" maxlength="10" /></label>
+        <label>Soma:
+        <input name="soma" type="text" id="soma" /></label>
+
+        <button id="btn2">Clique</button>
+        <br/>
+        <hr>
+         <label>Dia:<br />
+        <input name="dia" type="text" id="dia" size="40" /></label><br />
+         <label>Mês:<br />
+        <input name="mes" type="text" id="mes" size="40" /></label><br />
+         <label>Ano:<br />
+        <input name="ano" type="text" id="ano" size="40" /></label><br />
+         <label>Extenso:<br />
+        <input name="extenso" type="text" id="extenso" size="40" /></label><br />
+    </div>
+        
+
+      </div>   
+
+
+
+
+
+          <div>
+		<hr>
+         <h1>Data Diferença</h1>
+          <div>Recebe duas datas no formato dd/mm/aaaa. Retorna a diferença em dias entre a duas datas.</div>
+
+          <div>URL Exemplo:<a target="_blank" href="http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.datadiferenca.logic?string=21/12/2022;21/01/2023"> http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.datadiferenca.logic?string=21/12/2022;21/01/2023</a></div>
+
+           <div>Onde 21/12/2022 e 21/01/2023 são os parâmetros passados separados por ; </div>
+          <br>
+
+          "Criar aqui os inputs e botões necessários para a api"
+
+      </div>   
+
+
+
+
+
+
+     <div>
+		<hr>
+         <h1>Data Converte</h1>
+          <div>Recebe uma data no formato dd/mm/aaaa. Retorna a data no formato yyyy-mm-dd.</div>
+
+          <div>URL Exemplo:<a target="_blank" href="http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.dataconverte.logic?string=21/12/2022"> http://zpfvzz.hospedagemelastica.com.br/netlab/admin/admin.dataconverte.logic?string=21/12/2022</a></div>
+
+           <div>Onde 21/12/2022 é o parâmetros passado para a api </div>
+          <br>
+
+          "Criar aqui os inputs e botões necessários para a api"
+
+      </div>
+
+<br><br>
+    </body>
+
+    </html>
+    
